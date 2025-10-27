@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Word Puzzle Game Plus</title>
+   <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <!-- Main Game Card -->
+    <section class="card">
+      <h1>Word Puzzle Game <span class="pill" aria-hidden="true">Plus</span></h1>
+      <p class="sub">Guess the original word. Use hints if you must (they cost points). Every 3 solved puzzles triggers a <strong>bonus round</strong> (score ×2).</p>
+
+      <div class="statusbar" aria-live="polite">
+        <span class="tag">Score: <strong id="score">0</strong></span>
+        <span class="tag">Solved: <strong id="solved">0</strong></span>
+        <span class="tag">Bonus at: <strong id="next-bonus">3</strong></span>
+      </div>
+
+      <div class="grid">
+        <div class="puzzle-area" aria-describedby="message">
+          <div id="message" class="" role="status" aria-live="polite"></div>
+          <div class="word-display" aria-label="scrambled word">
+            <span id="scrambled-word"></span>
+          </div>
+          <div id="hint" class="hint"></div>
+        </div>
+
+        <div class="controls" role="group" aria-label="game controls">
+          <label class="sr-only" for="guess-input">Your guess</label>
+          <input id="guess-input" type="text" placeholder="Your guess…" autocomplete="off" />
+          <button id="submit-guess" class="btn-primary" aria-label="Submit guess">Submit</button>
+          <button id="hint-btn" class="btn-hint" aria-label="Get a hint">Hint</button>
+          <button id="new-puzzle" class="btn-neutral" aria-label="Load new puzzle">New Puzzle</button>
+          <button id="reset-game" class="btn-neutral" aria-label="Reset game (score and progress)">Reset</button>
+        </div>
+
+        <div class="banner" id="info-banner">
+          Pro tip: Hints deduct <strong>2</strong> points. Solving with a hint awards fewer points than solving directly.
+        </div>
+      </div>
+    </section>
+
+    <!-- Sidebar: Leaderboard & Help -->
+    <aside class="card aside">
+      <div class="section">
+        <h3>🏆 Leaderboard</h3>
+        <p class="muted">Top 3 scores (saved in your browser).</p>
+        <div id="leaderboard" class="leaderboard">
+          <ol id="leaderboard-list"><li class="muted">No scores yet — be the first!</li></ol>
+        </div>
+      </div>
+
+      <div class="section">
+        <h3>ℹ️ Rules</h3>
+        <ul class="muted" style="margin:8px 0 0 18px">
+          <li>Correct without hint: +10 points</li>
+          <li>Hint use: −2 points immediately, and reduced award (+5)</li>
+          <li>Every 3 solved puzzles: <strong>Bonus</strong> (score ×2)</li>
+          <li>Reset clears score & progress (leaderboard remains)</li>
+        </ul>
+      </div>
+    </aside>
+  </div>
+
+   <script src="script.js"></script>
+</body>
+</html>
